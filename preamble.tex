@@ -1,0 +1,149 @@
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm
+    ,footskip=35pt,headheight=15pt
+    %,showframe%  % showframe only for checking purpose. Remove for production.
+]{geometry} % page margins
+
+
+\usepackage{fancyhdr} % headers and footers
+
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+\fancypagestyle{fancy}{
+    \fancyhf{}
+    %
+    % Header %
+    \fancyhead[LE]{\scshape Kapitel \thechapter. \leftmark}
+    \fancyhead[RO]{\scshape \thesection. \rightmark}
+    \renewcommand{\headrulewidth}{0.3pt}
+    %
+    % Footer %
+    \fancyfoot[C]{\thepage}
+   % \setlength{\footskip}{10cm}%{15pt}
+    %\setlength{\footheight}{15cpi}
+    \renewcommand{\footrulewidth}{\iffootnote{0pt}{0.3pt}}
+}
+
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    %
+    \fancyfoot[C]{\thepage}
+    %\setlength{\footskip}{15pt}
+    \renewcommand{\footrulewidth}{\iffootnote{0pt}{0.3pt}}
+}
+
+
+\usepackage{titlesec} % format chapter look
+
+\titleformat{\chapter}{\bfseries\huge}{\thechapter.}{0.5em}{}
+
+
+\newcommand{\xoverline}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip} % overline short
+
+\usepackage[utf8]{inputenc}
+\usepackage[svgnames]{xcolor}
+\usepackage{amsmath, amsthm, amssymb, amsfonts,mathtools}
+\usepackage{tikz, tikz-cd}
+\usepackage{parskip} % Space between paragraphs
+\usepackage{thmtools}
+\usepackage{framed} % Bars left of theorems
+\usepackage[varbb]{newpxmath} % font
+\usepackage{dsfont} % for bb 1
+\usepackage{euscript}
+\usepackage{xfrac} % \sfrac 1/2
+\usepackage[makeroom]{cancel}
+\usepackage{bookmark}
+\usepackage{enumitem}
+\usepackage{hyperref,theoremref}
+
+\usepackage{imakeidx}
+\usepackage[totoc]{idxlayout} % package for including index page in the table of content
+
+
+\hypersetup{%
+	pdftitle={\booktitle},%
+	colorlinks=true, linkcolor=Blue,
+	bookmarksnumbered=true,%
+	bookmarksopen=true,%
+}
+ 
+%%%%% THEOREMS %%%%%
+
+\newenvironment{Leftbar}[1]{%
+    \def\FrameCommand{{\color{#1}\vrule width 3pt} \hspace{10pt}}%
+    \MakeFramed {\advance\hsize-\width \FrameRestore}
+}{\endMakeFramed}
+
+\newcommand{\NewTheoremStyle}[3][\sffamily]{%
+    \declaretheoremstyle[%
+        headfont=\sffamily\bfseries,%
+        notefont=\sffamily\bfseries,%
+        notebraces={}{},%
+        headpunct=,%
+        bodyfont=#1,%
+        headformat=\color{#3}\NAME~\NUMBER\hfill\NOTE\smallskip\linebreak,%
+        preheadhook=\begin{Leftbar}{#3},%
+        postfoothook=\end{Leftbar},%
+    ]{custom#2}
+}
+
+\newcommand{\NewTheorem}[3][]{%
+    \declaretheorem[style=custom#2, numberwithin=chapter, #1]{#3}
+}
+
+\NewTheoremStyle{definition}{DarkOrange}
+\NewTheoremStyle{lemma}{DarkCyan}
+\NewTheoremStyle{proposition}{DarkSlateBlue}
+\NewTheoremStyle{theorem}{Crimson}
+\NewTheoremStyle{corollary}{MediumVioletRed}
+\NewTheoremStyle[]{example}{OliveDrab}
+\NewTheoremStyle[]{remark}{Gray}
+\NewTheoremStyle{claim}{SeaGreen}
+
+\NewTheorem[title=Satz]{theorem}{theorem}
+\NewTheorem[title=Theorem, numberlike=theorem]{theorem}{theoremKai}
+\NewTheorem[numberlike=theorem]{definition}{definition}
+\NewTheorem[title=Definition]{definition}{definitionSC}
+\NewTheorem[numberlike=theorem]{lemma}{lemma}
+\NewTheorem[numberlike=theorem]{proposition}{proposition}
+\NewTheorem[title=Korollar, numberlike=theorem]{corollary}{corollary}
+\NewTheorem[title=Beispiel, numbered=no]{example}{example}
+\NewTheorem[title=Bemerkung, numbered=no]{remark}{remark}
+\newcounter{claimC} \NewTheorem[title=Behauptung, sibling=claimC]{claim}{claim}
+\newcounter{hlemmaC} \NewTheorem[title=Hilfslemma, sibling=hlemmaC]{lemma}{hlemma}
+\NewTheorem[title=Behauptung, numbered=no]{claim}{claim*}
+
+%%%%% AMS Proof Fix (Copied from amsthm docs) %%%%%
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax
+\trivlist
+\item\relax
+{\itshape
+\textbf{#1}\@addpunct{:}}\hspace\labelsep\ignorespaces
+}{%
+\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\renewcommand{\proofname}{Beweis}
+
+
+
+%%%%% Other %%%%%
+
+\setlength\parindent{0pt} % no indent
+
+\renewcommand{\theenumi}{\bfseries\alph{enumi}}
+\renewcommand{\theenumii}{\textit{\roman{enumii}}}
+
+\newcommand*{\listhack}{\leavevmode\vspace{-1.5em}}
+
+\renewcommand*\contentsname{Inhalt}
+\renewcommand*\chaptername{Kapitel}
