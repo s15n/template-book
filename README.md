@@ -77,3 +77,16 @@ und am Ende im Dokument vor `backcover`
 
 ### Nützliches
 `includeonly{<...>}` in Preamble
+
+`.gitignore`:
+```gitignore
+*.aux
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.log
+*.synctex.gz
+*.toc
+```
