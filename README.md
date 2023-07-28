@@ -63,7 +63,7 @@ Nach `preface`
 ```tex
 \maketoc
 ```
-Normales LaTeX tableofcontents. Nützlich: `\subsection*{<Name>} \addcontentsline{toc}{subsection}{<Name>}`
+Normales LaTeX tableofcontents. Nützlich: `\substoc`
 
 ### Index
 In der Preamble
@@ -74,3 +74,6 @@ und am Ende im Dokument vor `backcover`
 ```tex
 \printindex
 ```
+
+### Nützliches
+`includeonly{<...>}` in Preamble
