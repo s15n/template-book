@@ -2,7 +2,7 @@ Template für Skripte/Bücher, für Mathematik geeignet, deutschsprachig.
 
 ## How to use (in einer git-repository):
 ```bat
-git submodule add <Link dieser Seite>.git
+git submodule add https://github.com/simon14264/template-book.git
 git submodule update --init --recursive
 ```
 zum Aktualisieren:
