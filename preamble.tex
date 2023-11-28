@@ -104,12 +104,14 @@
 \NewTheoremStyle[]{remark}{Gray}
 \NewTheoremStyle{claim}{SeaGreen}
 \NewTheoremStyle[]{exercise}{DeepSkyBlue}
+\NewTheoremStyle[]{warning}{Red}
 
 \NewTheorem[title=Satz]{theorem}{theorem}
 \NewTheorem[title=Theorem, numberlike=theorem]{theorem}{theoremKai}
 \NewTheorem[numberlike=theorem]{definition}{definition}
 \NewTheorem[title=Definition]{definition}{definitionSC}
 \NewTheorem[numberlike=theorem]{lemma}{lemma}
+\NewTheorem[title=Lemma, numbered=no]{lemma}{lemma*}
 \NewTheorem[numberlike=theorem]{proposition}{proposition}
 \NewTheorem[title=Korollar, numberlike=theorem]{corollary}{corollary}
 \NewTheorem[title=Beispiel, numbered=no]{example}{example}
@@ -118,6 +120,7 @@
 \newcounter{hlemmaC} \NewTheorem[title=Hilfslemma, sibling=hlemmaC]{lemma}{hlemma}
 \NewTheorem[title=Behauptung, numbered=no]{claim}{claim*}
 \NewTheorem[title=Übung]{exercise}{exercise}
+\NewTheorem[title=Achtung, numbered=no]{warning}{warning}
 
 %%%%% AMS Proof Fix (Copied from amsthm docs) %%%%%
 
