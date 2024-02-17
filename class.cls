@@ -11,6 +11,8 @@
 \newcommand{\bookauthorbio}{}
 \newcommand{\authorbiosource}{}
 
+\newcommand{\frontmatterchaptername}{}
+
 
 \LoadClass[12pt,openany]{book}
 
@@ -57,7 +59,8 @@
 \newcommand{\preface}[1][Vorwort]{%
 \frontmatter
 \setcounter{page}{1}
-\pagestyle{plain}
+\pagestyle{fancy_frontmatter}
+\renewcommand{\frontmatterchaptername}{Vorwort}
 \chapter*{#1}
 \addcontentsline{toc}{chapter}{Vorwort}
 \input{preface}
@@ -65,14 +68,18 @@
 }
 
 \newcommand{\maketoc}{%
+\pagestyle{fancy_frontmatter}
+\renewcommand{\frontmatterchaptername}{Inhalt}
 \pdfbookmark[section]{\contentsname}{toc}
 \tableofcontents
 }
 
 \let\MainmatterOld\mainmatter
 \renewcommand{\mainmatter}{%
-\pagestyle{fancy}
+\pagestyle{fancy_frontmatter}
+\renewcommand{\frontmatterchaptername}{}
 \MainmatterOld
+\pagestyle{fancy}
 }
 
 \let\PrintindexOld\printindex
@@ -85,3 +92,5 @@
 \newcommand{\backcover}{%
 \input{template-book/backcover}
 }
+
+\raggedbottom
